@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -12,6 +9,8 @@ using Api.efcore;
 using Api.Domain.IRepositories;
 using Api.efcore.Repositories;
 using Api.application.SyscodeApp;
+using Api.application.FeedbackApp;
+using Api.application.FeedbackSyscodeApp;
 
 namespace CommonApi
 {
@@ -47,6 +46,10 @@ namespace CommonApi
             //仓储及服务进行依赖注入
             services.AddScoped<ISyscodeRepository, SyscodeRepository>();
             services.AddScoped<ISyscodeAppService, SyscodeAppService>();
+            services.AddScoped<IFeedbackRepository, FeedbackRepository>();
+            services.AddScoped<IFeedbackAppSevice, FeedbackAppSevice>();
+            services.AddScoped<IFeedbackSyscodeRepository, FeedbackSyscodeRepository>();
+            services.AddScoped<IFeedbackSyscodeAppService, FeedbackSyscodeAppService>();
 
             // Add framework services.
             services.AddApplicationInsightsTelemetry(Configuration);

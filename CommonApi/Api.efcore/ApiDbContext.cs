@@ -16,9 +16,16 @@ namespace Api.efcore
 
         public DbSet<Syscode> syscode { get; set; }
 
+        public DbSet<Feedback> feedbacks { get; set; }
+
+        public DbSet<FeedbackSyscode> feedbacksyscode { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<Syscode>().HasKey(sc => new { sc.Category, sc.Key });
+            builder.Entity<Feedback>().HasKey(f=>new { f.ID });
+            builder.Entity<FeedbackSyscode>().HasKey(fs => new { fs.ID });
+
             base.OnModelCreating(builder);
         }
     }

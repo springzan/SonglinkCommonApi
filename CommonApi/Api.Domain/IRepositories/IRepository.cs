@@ -59,5 +59,6 @@ namespace Api.Domain.IRepositories
         /// <param name="entity">要删除的实体</param>
         void Delete(TEntity entity);
 
+        void Save();
     }
 }
