@@ -33,5 +33,10 @@ namespace Api.application.SyscodeApp
         {
             return _syscodeRepository.GetAllByCategory(category);
         }
+
+        public List<Syscode> GetAllByCategoryAndDelFlag(string category, int del)
+        {
+            return _syscodeRepository.GetAllByCategoryAndDelFlag(category, del);
+        }
     }
 }

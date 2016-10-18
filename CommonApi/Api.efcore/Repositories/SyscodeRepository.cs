@@ -21,5 +21,10 @@ namespace Api.efcore.Repositories
         {
             return _dbContext.Set<Syscode>().Where(sc=>sc.Category==category).ToList();
         }
+
+        public List<Syscode> GetAllByCategoryAndDelFlag(string category, int del)
+        {
+            return _dbContext.Set<Syscode>().Where(sc => sc.Category == category && sc.Delflag == del).ToList();
+        }
     }
 }

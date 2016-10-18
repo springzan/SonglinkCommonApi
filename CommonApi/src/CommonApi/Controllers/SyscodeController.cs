@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Api.application.SyscodeApp;
 using Api.Domain.Entities;
+using CommonApi.Models.RequestModel;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -27,28 +28,25 @@ namespace CommonApi.Controllers
             return codes;
         }
 
-        // GET api/values/5
+        // GET api/syscode/category
         [HttpGet("{category}")]
         public IEnumerable<Syscode> Get(string category)
         {
             //var codes = _dbContext.Set<Syscode>().Where(sc=>sc.Category==category).ToList();
-            var codes = _syscodeAppService.GetAllByCategory(category);
-            return codes;
+            //var codes = _syscodeAppService.GetAllByCategory(category);
+            return _syscodeAppService.GetAllByCategoryAndDelFlag(category,0);
         }
+
 
         [HttpPost]
-        public IEnumerable<Syscode> Post()
+        public IEnumerable<Syscode> Post([FromBody] SyscodeRequest syscode)
         {
-            //var codes = _dbContext.Set<Syscode>().ToList();
-            var codes = _syscodeAppService.GetAll();
-            return codes;
+            if (syscode != null && !string.IsNullOrEmpty(syscode.category))
+            {
+                //return _syscodeAppService.GetAllByCategory(syscode.category);
+                return _syscodeAppService.GetAllByCategoryAndDelFlag(syscode.category, 0);
+            }
+            return _syscodeAppService.GetAll();
         }
-
-        //[HttpPost]
-        //public IEnumerable<Syscode> Post([FromBody]string category)
-        //{
-        //    var codes = _dbContext.Set<Syscode>().Where(sc => sc.Category == category).ToList();
-        //    return codes;
-        //}
     }
 }

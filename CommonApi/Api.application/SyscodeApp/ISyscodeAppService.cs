@@ -11,5 +11,7 @@ namespace Api.application.SyscodeApp
         List<Syscode> GetAll();
 
         List<Syscode> GetAllByCategory(string category);
+
+        List<Syscode> GetAllByCategoryAndDelFlag(string category,int del);
     }
 }

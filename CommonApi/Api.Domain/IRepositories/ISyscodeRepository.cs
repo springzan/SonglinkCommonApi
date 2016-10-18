@@ -12,5 +12,7 @@ namespace Api.Domain.IRepositories
     public interface ISyscodeRepository : IRepository<Syscode>
     {
         List<Syscode> GetAllByCategory(string category);
+
+        List<Syscode> GetAllByCategoryAndDelFlag(string category,int del);
     }
 }
