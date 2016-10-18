@@ -7,6 +7,11 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.EntityFrameworkCore;
+using Api.efcore;
+using Api.Domain.IRepositories;
+using Api.efcore.Repositories;
+using Api.application.SyscodeApp;
 
 namespace CommonApi
 {
@@ -34,6 +39,15 @@ namespace CommonApi
         // This method gets called by the runtime. Use this method to add services to the container
         public void ConfigureServices(IServiceCollection services)
         {
+            //获取数据库连接字符串
+            var sqlConnectString = Configuration.GetConnectionString("DefaultConnection");
+            //添加数据上下文
+            services.AddDbContext<ApiDbContext>(options => options.UseMySql(sqlConnectString));
+
+            //仓储及服务进行依赖注入
+            services.AddScoped<ISyscodeRepository, SyscodeRepository>();
+            services.AddScoped<ISyscodeAppService, SyscodeAppService>();
+
             // Add framework services.
             services.AddApplicationInsightsTelemetry(Configuration);
 
