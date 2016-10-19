@@ -41,7 +41,8 @@ namespace CommonApi
             //获取数据库连接字符串
             var sqlConnectString = Configuration.GetConnectionString("DefaultConnection");
             //添加数据上下文
-            services.AddDbContext<ApiDbContext>(options => options.UseMySql(sqlConnectString));
+            //services.AddDbContext<ApiDbContext>(options => options.UseMySQL(sqlConnectString));
+            services.AddDbContext<ApiDbContext>(options => options.UseMyCat(sqlConnectString));
 
             //仓储及服务进行依赖注入
             services.AddScoped<ISyscodeRepository, SyscodeRepository>();

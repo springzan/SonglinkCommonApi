@@ -4,7 +4,9 @@
   "dependencies": {
     "Api.Domain": "1.0.0-*",
     "NETStandard.Library": "1.6.0",
-    "Pomelo.EntityFrameworkCore.MySql": "1.0.1-prerelease-10018"
+    //"Pomelo.EntityFrameworkCore.MySql": "1.0.1-prerelease-10018"
+    //"MySql.Data.EntityFrameworkCore": "7.0.5-IR21",
+    "Pomelo.EntityFrameworkCore.MyCat": "1.0.0-prerelease-20160822"
   },
 
   "frameworks": {
