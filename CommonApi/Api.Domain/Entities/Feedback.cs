@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Api.Domain.Entities
 {
@@ -19,7 +20,6 @@ namespace Api.Domain.Entities
         public string Feeder { get; set; }
         public string FeedInfo { get; set; }
         public DateTime? FeedTime { get; set; }
-
 
     }
 }

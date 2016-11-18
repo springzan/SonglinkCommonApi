@@ -19,6 +19,7 @@ namespace Api.efcore.Repositories
 
         public Feedback GetEntityByID(int id)
         {
+            _dbContext.Set<Feedback>().
             return _dbContext.Set<Feedback>().FirstOrDefault(f => f.ID == id);
         }
     }
